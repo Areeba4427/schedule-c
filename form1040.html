@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="style2.css" rel="stylesheet" />
+    <title>Personal Form | Form 1040</title>
+
+</head>
+
+<body>
+
+    <div class="w3oct_wrapper" id="form_1040">
+
+        <div class="w3oct_mid_content">
+
+            <div class="w3o-multiTable-tabs">
+                <main class="main_header">
+                    <h1 class="header_head" id="heading_form">PERSONAL TAX - FORM 1040</h1>
+
+                </main>
+            </div>
+
+            <div class="w3o-table-wrap w3oTabletp1 active" id="input">
+                <div class="logo-container">
+                    <img src="https://i.ibb.co/kHxvfT4/Auto-Tax-Advisor-Main-Logo-2400x1800.webp"
+                        alt="Auto-Tax-Advisor-Main-Logo-2400x1800">
+                </div>
+
+
+                <div class="w3o-plan-tabs">
+                    <ul>
+                        <li class="w3o-plan-tab w3o-pt-2">SCENARIO 1</li>
+                        <li class="w3o-plan-tab w3o-pt-4">SCENARIO 2</li>
+                    </ul>
+                </div>
+                <div class="w3o-price-table-wrap">
+
+                    <div class="w3o-table-header">
+
+                        <div class="w3o-row">
+                            <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                <h3></h3>
+                            </div>
+
+                            <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                <h3>SCENARIO 1</h3>
+                            </div>
+
+                            <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                <h3>SCENARIO 2</h3>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w3o-table-body">
+                        <div class="w3o-row w3o-catgeory-row w3o-plan-active">
+                            <div class="w3o-col">
+                                <label for="monthly1099Income-2" class="form-label">PRELIMINARY INPUTS<br></label>
+                            </div>
+                        </div>
+                        <div class="w3o-accord-body">
+
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Tax Filing Status<span class="w3o-tooltip"
+                                            data-tooltip="Your tax filing status from the options below, choosing between Single, Married Filing Joint, or Head of Household."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <select id="filing_status_one" name="stateResidence" required=""
+                                        class="form-control form-control-select w-select">
+                                        <option value="default">Select Filing Status</option>
+                                        <option value="single">Single</option>
+                                        <option value="married">Married Filing Jointly</option>
+                                        <option value="head">Head of Household</option>
+
+                                    </select>
+                                </div>
+
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <select id="filing_status_two" name="stateResidence" required=""
+                                        class="form-control form-control-select w-select">
+                                        <option value="default">Select Filing Status</option>
+                                        <option value="single">Single</option>
+                                        <option value="married">Married Filing Jointly</option>
+                                        <option value="head">Head of Household</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Total dependents eligible for child tax credit<span class="w3o-tooltip"
+                                            data-tooltip="Total number of dependents eligible for the Child Tax Credit, including qualifying children."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="2" type="number" id="child_credit1" />
+                                </div>
+
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="2" type="number" id="child_credit2" />
+                                </div>
+                            </div>
+
+
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Total other dependents not eligible for child tax credit (excluding spouse)<span
+                                            class="w3o-tooltip"
+                                            data-tooltip="Total number of dependents not eligible for the Child Tax Credit, excluding the spouse."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="2" type="number" id="child_credit_uneligible1" />
+                                </div>
+
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="2" type="number" id="child_credit_uneligible2" />
+                                </div>
+                            </div>
+
+
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Number (taxpayer or spouse) 65 or older or blind<span class="w3o-tooltip"
+                                            data-tooltip="Total number of individuals who are 65 or older or blind, either the taxpayer or the spouse, as they may qualify for certain tax benefits."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="2" type="number" id="sixty_five_1" />
+                                </div>
+
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="2" type="number" id="sixty_five_2" />
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="w3o-row w3o-catgeory-row w3o-plan-active">
+                            <div class="w3o-col">
+                                <label for="monthly1099Income-2" class="form-label">INCOME<br></label>
+                            </div>
+                        </div>
+                        <div class="w3o-accord-body">
+
+                            <!-- Wages, salaries, tips, etc. (from Form W-2) -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Wages, salaries, tips, etc. (from Form W-2)<span class="w3o-tooltip"
+                                            data-tooltip="Total earnings from employment, including wages, salaries, and tips reported on Form W-2."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$50,000" type="text" id="wages1"
+                                        class="w3o-custmVal total_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$50,000" type="text" id="wages2"
+                                        class="w3o-custmVal total_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- Taxable Interest -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Taxable Interest<span class="w3o-tooltip"
+                                            data-tooltip="Interest income subject to taxation, such as interest earned on savings accounts or bonds."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$5,000" type="text" id="interest1"
+                                        class="w3o-custmVal total_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$5,000" type="text" id="interest2"
+                                        class="w3o-custmVal total_income_two" />
+                                </div>
+                            </div>
+
+
+
+                            <!-- Wages, salaries, tips, etc. (from Form W-2) -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Ordinary dividends<span class="w3o-tooltip"
+                                            data-tooltip="Dividend income received from investments, typically taxed at ordinary income rates."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$50,000" type="text" id="ordinary_div1"
+                                        class="w3o-custmVal total_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$50,000" type="text" id="ordinary_div2"
+                                        class="w3o-custmVal total_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- Taxable Interest -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Qualified dividend portion of ordinary dividend total<span class="w3o-tooltip"
+                                            data-tooltip="Portion of ordinary dividends that qualifies for lower tax rates."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$5,000" type="text" id="qualified_div1"
+                                        class="w3o-custmVal total_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$5,000" type="text" id="qualified_div2"
+                                        class="w3o-custmVal total_income_two" />
+                                </div>
+                            </div>
+
+
+
+                            <!-- Wages, salaries, tips, etc. (from Form W-2) -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Qualified dividends in K-1's<span class="w3o-tooltip"
+                                            data-tooltip="Qualified dividend income reported on Schedule K-1 from partnerships or S-corporations."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$50,000" type="text" id="qualified_div_K1"
+                                        class="w3o-custmVal total_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$50,000" type="text" id="qualified_div_K2"
+                                        class="w3o-custmVal total_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- Taxable Interest -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>IRAs, pensions & annuities (include taxable only)<span class="w3o-tooltip"
+                                            data-tooltip="Income from Individual Retirement Accounts (IRAs), pensions, and annuities, including the taxable portion."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$5,000" type="text" id="Ira_pension1"
+                                        class="w3o-custmVal total_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$5,000" type="text" id="Ira_pension2"
+                                        class="w3o-custmVal total_income_two" />
+                                </div>
+                            </div>
+
+
+
+                            <!-- Social Security Benefits -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Social Security Benefits<span class="w3o-tooltip"
+                                            data-tooltip="Income received from Social Security, subject to taxation based on certain criteria."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$10,000" type="text" id="socialSecurity1"
+                                        class="w3o-custmVal total_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$10,000" type="text" id="socialSecurity2"
+                                        class="w3o-custmVal total_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- Taxable Refunds, Credits, or Offsets of State & Local Income Taxes (Taxable Portion) -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Taxable Refunds, Credits, or Offsets of State & Local Income Taxes (Taxable
+                                        Portion)<span class="w3o-tooltip"
+                                            data-tooltip="Portion of state or local income tax refunds, credits, or offsets subject to federal taxation."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$2,000" type="text" id="taxableRefunds1"
+                                        class="w3o-custmVal total_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$2,000" type="text" id="taxableRefunds2"
+                                        class="w3o-custmVal total_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- Alimony Received -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Alimony Received<span class="w3o-tooltip"
+                                            data-tooltip="Payments received as alimony, which may be considered taxable income."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$3,000" type="text" id="alimonyReceived1"
+                                        class="w3o-custmVal total_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$3,000" type="text" id="alimonyReceived2"
+                                        class="w3o-custmVal total_income_two" />
+                                </div>
+                            </div>
+
+
+                            <!-- Business Income or (Loss) - Schedule C -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Business Income or (Loss) - Schedule C<span class="w3o-tooltip"
+                                            data-tooltip="Profit or loss from a business reported on Schedule C of the tax return."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$15,000" type="text" id="businessIncome1"
+                                        class="w3o-custmVal total_income_one" readonly />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$15,000" type="text" id="businessIncome2"
+                                        class="w3o-custmVal total_income_two" readonly />
+                                </div>
+                            </div>
+
+                            <div class="w3o-row w3o-catgeory-row">
+                                <div class="w3o-col">
+                                    <label for="monthly1099Income-2" class="form-label">CAPITAL GAINS<br></label>
+                                </div>
+                            </div>
+                            <div class="w3o-accord-body" style="display: none;">
+
+                                <!-- Capital Gain or (Loss) - Schedule D -->
+                                <div class="w3o-row">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>Capital Gain or (Loss) - Schedule D<span class="w3o-tooltip"
+                                                data-tooltip="Gains or losses from the sale of capital assets, reported on Schedule D."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$8,000" type="text" id="capitalGain1"
+                                            class="w3o-custmVal total_income_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$8,000" type="text" id="capitalGain2"
+                                            class="w3o-custmVal total_income_two" />
+                                    </div>
+                                </div>
+
+                                <!-- Long-Term Capital Gain Portion (Subject to Lower Rates) -->
+                                <div class="w3o-row">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>Long-Term Capital Gain Portion (Subject to Lower Rates)<span
+                                                class="w3o-tooltip"
+                                                data-tooltip="Portion of long-term capital gains subject to lower tax rates."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$5,000" type="text" id="longTermCapitalGain1"
+                                            class="w3o-custmVal total_income_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$5,000" type="text" id="longTermCapitalGain2"
+                                            class="w3o-custmVal total_income_two" />
+                                    </div>
+                                </div>
+
+                                <!-- Long-Term Gain Subject to 28% Max Collectible Rate -->
+                                <div class="w3o-row">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>Long-Term Gain Subject to 28% Max Collectible Rate<span class="w3o-tooltip"
+                                                data-tooltip="Long-term capital gains subject to a maximum collectible rate of 28%."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$3,000" type="text" id="longTermGain28Percent1"
+                                            class="w3o-custmVal total_income_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$3,000" type="text" id="longTermGain28Percent2"
+                                            class="w3o-custmVal total_income_two" />
+                                    </div>
+                                </div>
+
+                                <!-- Long-Term Gain Subject to 25% Unrecaptured 1250 Gain Rate -->
+                                <div class="w3o-row">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>Long-Term Gain Subject to 25% Unrecaptured 1250 Gain Rate<span
+                                                class="w3o-tooltip"
+                                                data-tooltip="Long-term capital gains subject to a 25% unrecaptured 1250 gain rate."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$2,000" type="text" id="longTermGain25Percent1"
+                                            class="w3o-custmVal total_income_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$2,000" type="text" id="longTermGain25Percent2"
+                                            class="w3o-custmVal total_income_two" />
+                                    </div>
+                                </div>
+
+                                <!-- Other Gains or (Losses) from Form 4797 -->
+                                <div class="w3o-row">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>Other Gains or (Losses) from Form 4797<span class="w3o-tooltip"
+                                                data-tooltip="Gains or losses from the sale of business property reported on Form 4797."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$4,000" type="text" id="otherGainsLosses1"
+                                            class="w3o-custmVal total_income_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$4,000" type="text" id="otherGainsLosses2"
+                                            class="w3o-custmVal total_income_two" />
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <!-- Rental Real Estate, Royalties - Schedule E -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Rental Real Estate, Royalties - Schedule E<span class="w3o-tooltip"
+                                            data-tooltip="Income or losses from rental real estate and royalties reported on Schedule E."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$6,000" type="text" id="rentalRoyalties1"
+                                        class="w3o-custmVal total_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$6,000" type="text" id="rentalRoyalties2"
+                                        class="w3o-custmVal total_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- Partnerships (from K-1) -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>K-1 Income<span class="w3o-tooltip"
+                                            data-tooltip="Income or losses from Partnerships, S-Corporations and/or Trust Reported on Schedule K-1"><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$7,000" type="text" id="partnershipsK1_1"
+                                        class="w3o-custmVal total_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$7,000" type="text" id="partnershipsK1_2"
+                                        class="w3o-custmVal total_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- Farm Income (Loss) - Schedule F -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Farm Income (Loss) - Schedule F<span class="w3o-tooltip"
+                                            data-tooltip="Income or losses from farming activities reported on Schedule F."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$10,000" type="text" id="farmIncomeLoss1"
+                                        class="w3o-custmVal total_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$10,000" type="text" id="farmIncomeLoss2"
+                                        class="w3o-custmVal total_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- Unemployment Compensation -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Unemployment Compensation<span class="w3o-tooltip"
+                                            data-tooltip="Income received as unemployment compensation, subject to federal taxation."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$11,000" type="text" id="unemploymentCompensation1"
+                                        class="w3o-custmVal total_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$11,000" type="text" id="unemploymentCompensation2"
+                                        class="w3o-custmVal total_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- Other Income (List Type) -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Other Income (List Type)<span class="w3o-tooltip"
+                                            data-tooltip="Any additional income not covered by specific categories, with the option to list the type."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$12,000" type="text" id="otherIncomeListType1"
+                                        class="w3o-custmVal total_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$12,000" type="text" id="otherIncomeListType2"
+                                        class="w3o-custmVal total_income_two" />
+                                </div>
+                            </div>
+                            <!-- FINAL -->
+                            <div class="w3o-row w3o-final">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Total Income<span class="w3o-tooltip"
+                                            data-tooltip="The sum of all sources of income metioned above, representing the total income"><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$12,000" type="text" id="total_income1" class="w3o-custmVal"
+                                        readonly />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$12,000" type="text" id="total_income2" class="w3o-custmVal"
+                                        readonly />
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+                        <div class="w3o-row w3o-catgeory-row w3o-plan-active">
+                            <div class="w3o-col">
+                                <label for="monthly1099Income-2" class="form-label">ADJUSTMENTS TO INCOME<br></label>
+                            </div>
+                        </div>
+                        <div class="w3o-accord-body">
+                            <!-- Educator Expenses -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Educator Expenses<span class="w3o-tooltip"
+                                            data-tooltip="Educator expenses represent eligible out-of-pocket costs incurred by teachers for classroom supplies and materials."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$500" type="text" id="educatorExpenses1"
+                                        class="w3o-custmVal adjustment_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$500" type="text" id="educatorExpenses2"
+                                        class="w3o-custmVal adjustment_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- Certain Business Expenses of Reservists... from Form 2106 -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Certain Business Expenses of Reservists... from Form 2106<span
+                                            class="w3o-tooltip"
+                                            data-tooltip="Form 2106 addresses specific business-related expenses incurred by members of the reserves, allowing for potential tax deductions."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$1,000" type="text" id="reservistExpenses1"
+                                        class="w3o-custmVal adjustment_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$1,000" type="text" id="reservistExpenses2"
+                                        class="w3o-custmVal adjustment_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- HSA Deduction -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>HSA Deduction<span class="w3o-tooltip"
+                                            data-tooltip="This deduction is associated with contributions made to a Health Savings Account (HSA), providing tax benefits for qualified medical expenses."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$2,000" type="text" id="hsaDeduction1"
+                                        class="w3o-custmVal adjustment_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$2,000" type="text" id="hsaDeduction2"
+                                        class="w3o-custmVal adjustment_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- Add: HSA Deduction for Contributions to be Made between Jan-Apr -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Add: HSA Deduction for Contributions to be Made between Jan-Apr<span
+                                            class="w3o-tooltip"
+                                            data-tooltip="This additional deduction pertains to HSA contributions made between January and April, extending the timeframe for tax benefits."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$500" type="text" id="hsaContributionJanApr1"
+                                        class="w3o-custmVal adjustment_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$500" type="text" id="hsaContributionJanApr2"
+                                        class="w3o-custmVal adjustment_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- Moving Expenses for Members of Armed Forces -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Moving Expenses for Members of Armed Forces<span class="w3o-tooltip"
+                                            data-tooltip="Members of the Armed Forces may be eligible for deductions related to qualified moving expenses."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$1,000" type="text" id="movingExpensesArmedForces1"
+                                        class="w3o-custmVal adjustment_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$1,000" type="text" id="movingExpensesArmedForces2"
+                                        class="w3o-custmVal adjustment_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- Deductible Part of Self-Employment Tax - Schedule SE -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Deductible Part of Self-Employment Tax - Schedule SE<span class="w3o-tooltip"
+                                            data-tooltip="Schedule SE calculates the deductible portion of self-employment taxes, which includes Social Security and Medicare taxes for self-employed individuals."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$1,500" type="text" id="selfEmploymentTax1"
+                                        class="w3o-custmVal adjustment_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$1,500" type="text" id="selfEmploymentTax2"
+                                        class="w3o-custmVal adjustment_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- Self-Employed SEP, SIMPLE, and Qualified Plans -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Self-Employed SEP, SIMPLE, and Qualified Plans<span class="w3o-tooltip"
+                                            data-tooltip="Self-employed individuals can contribute to retirement plans such as SEP, SIMPLE, or other qualified plans, providing potential tax advantages."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$2,000" type="text" id="selfEmployedPlans1"
+                                        class="w3o-custmVal adjustment_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$2,000" type="text" id="selfEmployedPlans2"
+                                        class="w3o-custmVal adjustment_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- Add: Self-Employed Deduction for Contributions to be Made between Jan-Apr -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Add: Self-Employed Deduction for Contributions to be Made between Jan-Apr<span
+                                            class="w3o-tooltip"
+                                            data-tooltip="An additional deduction for self-employed individuals, specifically for contributions made to retirement plans between January and April."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$500" type="text" id="selfEmployedDeductionJanApr1"
+                                        class="w3o-custmVal adjustment_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$500" type="text" id="selfEmployedDeductionJanApr2"
+                                        class="w3o-custmVal adjustment_income_two" />
+                                </div>
+                            </div>
+
+
+                            <!-- Self-Employed Health Insurance Deduction -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Self-Employed Health Insurance Deduction<span class="w3o-tooltip"
+                                            data-tooltip="Self-employed individuals may be eligible for a deduction related to health insurance premiums, providing tax benefits."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$3,000" type="text" id="selfEmployedHealthInsuranceDeduction1"
+                                        class="w3o-custmVal adjustment_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$3,000" type="text" id="selfEmployedHealthInsuranceDeduction2"
+                                        class="w3o-custmVal adjustment_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- Penalty on Early Withdrawal of Savings -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Penalty on Early Withdrawal of Savings<span class="w3o-tooltip"
+                                            data-tooltip="This relates to penalties incurred for withdrawing savings from certain accounts before reaching the qualifying age."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$500" type="text" id="earlyWithdrawalPenalty1"
+                                        class="w3o-custmVal adjustment_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$500" type="text" id="earlyWithdrawalPenalty2"
+                                        class="w3o-custmVal adjustment_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- Alimony Paid -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Alimony Paid<span class="w3o-tooltip"
+                                            data-tooltip="Alimony paid represents the amount of spousal support paid by an individual, potentially qualifying for tax deductions."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$1,000" type="text" id="alimonyPaid1"
+                                        class="w3o-custmVal adjustment_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$1,000" type="text" id="alimonyPaid2"
+                                        class="w3o-custmVal adjustment_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- IRA Deduction -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>IRA Deduction<span class="w3o-tooltip"
+                                            data-tooltip="Individuals contributing to Individual Retirement Accounts (IRAs) may be eligible for a deduction, reducing taxable income."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$4,000" type="text" id="iraDeduction1"
+                                        class="w3o-custmVal adjustment_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$4,000" type="text" id="iraDeduction2"
+                                        class="w3o-custmVal adjustment_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- Add: IRA Deduction for Contributions to be Made between Jan-Apr -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Add: IRA Deduction for Contributions to be Made between Jan-Apr<span
+                                            class="w3o-tooltip"
+                                            data-tooltip="An additional deduction for IRA contributions made between January and April, extending the timeframe for tax benefits."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$500" type="text" id="iraDeductionJanApr1"
+                                        class="w3o-custmVal adjustment_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$500" type="text" id="iraDeductionJanApr2"
+                                        class="w3o-custmVal adjustment_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- Student Loan Interest Deduction -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Student Loan Interest Deduction<span class="w3o-tooltip"
+                                            data-tooltip="his deduction allows eligible taxpayers to deduct interest paid on qualifying student loans, potentially reducing taxable income."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$1,200" type="text" id="studentLoanInterestDeduction1"
+                                        class="w3o-custmVal adjustment_income_one" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$1,200" type="text" id="studentLoanInterestDeduction2"
+                                        class="w3o-custmVal adjustment_income_two" />
+                                </div>
+                            </div>
+
+                            <!-- Total Adjustments to Income -->
+                            <div class="w3o-row w3o-final">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Total Adjustments to Income<span class="w3o-tooltip"
+                                            data-tooltip="Sum of Adjustments to income mentioned above."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$5,700" type="text" id="totalAdjustmentsIncome1"
+                                        class="w3o-custmVal" readonly />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$5,700" type="text" id="totalAdjustmentsIncome2"
+                                        class="w3o-custmVal" readonly />
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="w3o-row w3o-catgeory-row w3o-plan-active">
+                            <div class="w3o-col">
+                                <label for="monthly1099Income-2" class="form-label">DEDUCTIONS<br></label>
+                            </div>
+                        </div>
+                        <div class="w3o-accord-body">
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Type of Deduction<span class="w3o-tooltip"
+                                            data-tooltip="Choose between Standard Deduction (a fixed amount based on your filing status) or Itemized Deductions (listing specific qualifying expenses). Evaluate for the best tax benefit."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <select id="deduction_type_one" name="stateResidence" required=""
+                                        class="form-control form-control-select w-select">
+                                        <option value="standard">Standard Deduction</option>
+                                        <option value="itemized">Itemized Deduction</option>
+
+                                    </select>
+                                </div>
+
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <select id="deduction_type_two" name="stateResidence" required=""
+                                        class="form-control form-control-select w-select">
+                                        <option value="standard">Standard Deduction</option>
+                                        <option value="itemized">Itemized Deduction</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="w3o-row" id="standard_deduction_row" style="display:none;">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Standard Deduction<span class="w3o-tooltip"
+                                            data-tooltip="Standard deduction depends on your filing status."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$6,000" type="text" id="standard_deduction_1"
+                                        class="w3o-custmVal" readonly/>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$6,000" type="text" id="standard_deduction_2"
+                                        class="w3o-custmVal" readonly/>
+                                </div>
+                            </div>
+                            <div id="itemized">
+                                <div class="w3o-row itemized_row" style="display:none;">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>Medical and Dental Expenses<span class="w3o-tooltip"
+                                                data-tooltip="Expenses for medical and dental care that exceed 7.5% of Adjusted Gross Income (AGI)."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$100.00" type="text" id="medicalDentalExpenses1"
+                                            class="w3o-custmVal itemized_1 item_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$100.00" type="text" id="medicalDentalExpenses2"
+                                            class="w3o-custmVal itemized_2 item_two" />
+                                    </div>
+                                </div>
+
+                                <!-- State and local income taxes or general sales tax (greater) -->
+                                <div class="w3o-row itemized_row" style="display:none;">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>State and Local Income Taxes or General Sales Tax (greater)<span
+                                                class="w3o-tooltip"
+                                                data-tooltip="Choose the greater of either state and local income taxes or general sales tax as a deduction."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$100.00" type="text" id="stateLocalTaxes1"
+                                            class="w3o-custmVal itemized_1 item_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$100.00" type="text" id="stateLocalTaxes2"
+                                            class="w3o-custmVal itemized_2 item_two" />
+                                    </div>
+                                </div>
+
+                                <!-- State and Local Income Taxes or General Sales Tax -->
+                                <div class="w3o-row itemized_row" style="display:none;">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>State and Local Income Taxes<span class="w3o-tooltip"
+                                                data-tooltip="Choose the greater of either state and local income taxes or general sales tax as a deduction."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$100.00" type="text" id="stateLocalTaxes_part2_1"
+                                            class="w3o-custmVal itemized_1 item_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$100.00" type="text" id="stateLocalTaxes_part2_2"
+                                            class="w3o-custmVal itemized_2 item_two" />
+                                    </div>
+                                </div>
+
+                                <!-- State and Local Income Taxes or General Sales Tax -->
+                                <div class="w3o-row itemized_row" style="display:none;">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>State and local income tax carryover from prior year<span class="w3o-tooltip"
+                                                data-tooltip="Choose the greater of either state and local income taxes or general sales tax as a deduction."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$100.00" type="text" id="stateLocalTaxes_prior_1"
+                                            class="w3o-custmVal itemized_1 item_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$100.00" type="text" id="stateLocalTaxes_prior_2"
+                                            class="w3o-custmVal itemized_2 item_two" />
+                                    </div>
+                                </div>
+
+                                <div class="w3o-row itemized_row" style="display:none;">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>General sales tax<span class="w3o-tooltip"
+                                                data-tooltip="Choose the greater of either state and local income taxes or general sales tax as a deduction."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$100.00" type="text" id="general_sales_1"
+                                            class="w3o-custmVal itemized_1 item_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$100.00" type="text" id="general_sales_2"
+                                            class="w3o-custmVal itemized_2 item_two" />
+                                    </div>
+                                </div>
+
+                                <!-- State and local real estate taxes -->
+                                <div class="w3o-row itemized_row" style="display:none;">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>State and Local Real Estate Taxes<span class="w3o-tooltip"
+                                                data-tooltip="Deductible state and local real estate taxes."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$100.00" type="text" id="realEstateTaxes1"
+                                            class="w3o-custmVal itemized_1 item_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$100.00" type="text" id="realEstateTaxes2"
+                                            class="w3o-custmVal itemized_2 item_two" />
+                                    </div>
+                                </div>
+
+                                <!-- Add back: State and local real estate taxes used for OIH deduction -->
+                                <div class="w3o-row itemized_row" style="display:none;">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>Add back: State and Local Real Estate Taxes used for OIH Deduction<span
+                                                class="w3o-tooltip"
+                                                data-tooltip="Add back state and local real estate taxes used for OIH (Other Itemized Deductions) deduction."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$100.00" type="text" id="addBackRealEstateTaxes1"
+                                            class="w3o-custmVal itemized_1 item_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$100.00" type="text" id="addBackRealEstateTaxes2"
+                                            class="w3o-custmVal itemized_2 item_two" />
+                                    </div>
+                                </div>
+
+                                <!-- State and local personal property taxes -->
+                                <div class="w3o-row itemized_row" style="display:none;">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>State and Local Personal Property Taxes<span class="w3o-tooltip"
+                                                data-tooltip="Deductible state and local personal property taxes."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$100.00" type="text" id="personalPropertyTaxes1"
+                                            class="w3o-custmVal itemized_1 item_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$100.00" type="text" id="personalPropertyTaxes2"
+                                            class="w3o-custmVal itemized_2 item_two" />
+                                    </div>
+                                </div>
+
+
+                                <!-- Limit taxes to $10,000 -->
+                                <div class="w3o-row itemized_row" style="display:none;">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>Limit Taxes to $10,000<span class="w3o-tooltip"
+                                                data-tooltip="Limit the deduction for state and local taxes to $10,000."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$100.00" type="text" id="limitTaxes1"
+                                            class="w3o-custmVal itemized_1 item_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$100.00" type="text" id="limitTaxes2"
+                                            class="w3o-custmVal itemized_2 item_two" />
+                                    </div>
+                                </div>
+
+                                <!-- Home mortgage interest and points -->
+                                <div class="w3o-row itemized_row" style="display:none;">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>Home Mortgage Interest and Points<span class="w3o-tooltip"
+                                                data-tooltip="Deductible home mortgage interest and points."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$100.00" type="text" id="homeMortgageInterest1"
+                                            class="w3o-custmVal itemized_1 item_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$100.00" type="text" id="homeMortgageInterest2"
+                                            class="w3o-custmVal itemized_2 item_two" />
+                                    </div>
+                                </div>
+
+                                <!-- Add back: Home mortgage interest and points used for OIH deduction -->
+                                <div class="w3o-row itemized_row" style="display:none;">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>Add back: Home Mortgage Interest and Points used for OIH Deduction<span
+                                                class="w3o-tooltip"
+                                                data-tooltip="Add back home mortgage interest and points used for OIH (Other Itemized Deductions) deduction."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$100.00" type="text" id="addBackHomeMortgageInterest1"
+                                            class="w3o-custmVal itemized_1 item_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$100.00" type="text" id="addBackHomeMortgageInterest2"
+                                            class="w3o-custmVal itemized_2 item_two" />
+                                    </div>
+                                </div>
+
+                                <!-- Investment interest -->
+                                <div class="w3o-row itemized_row" style="display:none;">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>Investment Interest<span class="w3o-tooltip"
+                                                data-tooltip="Deductible investment interest."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$100.00" type="text" id="investmentInterest1"
+                                            class="w3o-custmVal itemized_1 item_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$100.00" type="text" id="investmentInterest2"
+                                            class="w3o-custmVal itemized_2 item_two" />
+                                    </div>
+                                </div>
+
+
+                                <!-- Gifts to charity by cash or check -->
+                                <div class="w3o-row itemized_row" style="display:none;">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>Gifts to Charity by Cash or Check<span class="w3o-tooltip"
+                                                data-tooltip="Deductible gifts to charity made by cash or check."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$100.00" type="text" id="charityByCashCheck1"
+                                            class="w3o-custmVal itemized_1 item_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$100.00" type="text" id="charityByCashCheck2"
+                                            class="w3o-custmVal itemized_2 item_two" />
+                                    </div>
+                                </div>
+
+                                <!-- Gifts to charity other than by cash or check -->
+                                <div class="w3o-row itemized_row" style="display:none;">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>Gifts to Charity Other Than by Cash or Check<span class="w3o-tooltip"
+                                                data-tooltip="Deductible gifts to charity made other than by cash or check."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$100.00" type="text" id="charityOtherThanCashCheck1"
+                                            class="w3o-custmVal itemized_1 item_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$100.00" type="text" id="charityOtherThanCashCheck2"
+                                            class="w3o-custmVal itemized_2 item_two" />
+                                    </div>
+                                </div>
+
+                                <!-- Gifts to charity carryover from prior year -->
+                                <div class="w3o-row itemized_row" style="display:none;">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>Gifts to Charity Carryover from Prior Year<span class="w3o-tooltip"
+                                                data-tooltip="Carryover of deductible gifts to charity from the prior year."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$100.00" type="text" id="charityCarryover1"
+                                            class="w3o-custmVal itemized_1 item_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$100.00" type="text" id="charityCarryover2"
+                                            class="w3o-custmVal itemized_2 item_two" />
+                                    </div>
+                                </div>
+
+                                <!-- Casualty and theft losses from federally declared disaster - Form 4684 -->
+                                <div class="w3o-row itemized_row" style="display:none;">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>Casualty and Theft Losses from Federally Declared Disaster - Form 4684<span
+                                                class="w3o-tooltip"
+                                                data-tooltip="Deductible casualty and theft losses from a federally declared disaster reported on Form 4684."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$100.00" type="text" id="casualtyTheftLosses1"
+                                            class="w3o-custmVal itemized_1 item_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$100.00" type="text" id="casualtyTheftLosses2"
+                                            class="w3o-custmVal itemized_2 item_two" />
+                                    </div>
+                                </div>
+
+                                <!-- Other itemized deductions -->
+                                <div class="w3o-row itemized_row" style="display:none;">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>Other Itemized Deductions<span class="w3o-tooltip"
+                                                data-tooltip="Any other deductible itemized deductions not covered in specific categories."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$100.00" type="text" id="otherItemizedDeductions1"
+                                            class="w3o-custmVal itemized_1 item_one" />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$100.00" type="text" id="otherItemizedDeductions2"
+                                            class="w3o-custmVal itemized_2 item_two" />
+                                    </div>
+                                </div>
+
+                                <!-- Total itemized deductions -->
+                                <div class="w3o-row itemized_row w3o-final" style="display:none;">
+                                    <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                        <p>Total Itemized Deductions<span class="w3o-tooltip"
+                                                data-tooltip="Sum of all itemized deductions."><img
+                                                    src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                        <input placeholder="$100.00" type="text" id="totalItemizedDeductions1"
+                                            class="w3o-custmVal itemized_1" readonly />
+                                    </div>
+                                    <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                        <input placeholder="$100.00" type="text" id="totalItemizedDeductions2"
+                                            class="w3o-custmVal itemized_2" readonly />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+   <div class="w3o-row w3o-catgeory-row w3o-plan-active">
+                            <div class="w3o-col">
+                                <label for="monthly1099Income-2" class="form-label">INCOME DEDUCTION<br></label>
+                            </div>
+                        </div>
+                        <div class="w3o-accord-body">
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Qualified Business Income Deduction<span class="w3o-tooltip"
+                                            data-tooltip= "Claim up to 20% deduction on your business income, reducing your tax liability. Ensure eligibility and maximize savings on your tax return."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$2,000" type="text" id="qualified1"
+                                        class="w3o-custmVal" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$2,000" type="text" id="qualified2"
+                                        class="w3o-custmVal" />
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="w3o-row w3o-catgeory-row w3o-plan-active">
+                            <div class="w3o-col">
+                                <label for="monthly1099Income-2" class="form-label">ALTERNATIVE TAXES<br></label>
+                            </div>
+                        </div>
+                        <div class="w3o-accord-body">
+                          
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Alternative Minimum Tax<span class="w3o-tooltip"
+                                            data-tooltip="A supplementary tax calculation ensuring that higher-income individuals and corporations pay a minimum level of tax, preventing excessive use of deductions."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$2,000" type="text" id="alternative_minimum_tax1"
+                                        class="w3o-custmVal" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$2,000" type="text" id="alternative_minimum_tax2"
+                                        class="w3o-custmVal" />
+                                </div>
+                            </div>
+
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Excessive Advance Premium Tax Credit Rapayment<span class="w3o-tooltip"
+                                            data-tooltip="**Excessive Premium Tax Credit Repayment:**
+                                            When an individual, who received advance credits to lower health insurance costs, ends up repaying an amount that surpasses the income-based limit. This can happen if the actual income is lower than initially estimated, leading to a higher subsidy repayment."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$2,000" type="text" id="credit_repayment1"
+                                        class="w3o-custmVal" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$2,000" type="text" id="credit_repayment2"
+                                        class="w3o-custmVal" />
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+
+                        <div class="w3o-row w3o-catgeory-row w3o-plan-active">
+                            <div class="w3o-col">
+                                <label for="monthly1099Income-2" class="form-label">TAX CREDITS<br></label>
+                            </div>
+                        </div>
+                        <div class="w3o-accord-body">
+                            <!-- Child Tax Credit / Credit for Other Dependents -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Child Tax Credit / Credit for Other Dependents<span class="w3o-tooltip"
+                                            data-tooltip="This credit provides financial relief for eligible taxpayers with qualifying dependent children or dependents who are not children"><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$2,000" type="text" id="childTaxCredit1"
+                                        class="w3o-custmVal credits_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$2,000" type="text" id="childTaxCredit2"
+                                        class="w3o-custmVal credits_2" />
+                                </div>
+                            </div>
+
+                            <!-- Foreign Tax Credit - Form 1116 -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Foreign Tax Credit - Form 1116<span class="w3o-tooltip"
+                                            data-tooltip="Form 1116 is used to claim a credit for taxes paid to a foreign country, reducing the U.S. tax liability on foreign-sourced income."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$1,500" type="text" id="foreignTaxCredit1"
+                                        class="w3o-custmVal credits_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$1,500" type="text" id="foreignTaxCredit2"
+                                        class="w3o-custmVal credits_2" />
+                                </div>
+                            </div>
+
+                            <!-- Credit for Child and Dependent Care Expenses - Form 2441 -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Credit for Child and Dependent Care Expenses - Form 2441<span class="w3o-tooltip"
+                                            data-tooltip="Form 2441 allows you to claim a credit for eligible child and dependent care expenses, aiding working individuals and families."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$1,200" type="text" id="childDependentCareCredit1"
+                                        class="w3o-custmVal credits_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$1,200" type="text" id="childDependentCareCredit2"
+                                        class="w3o-custmVal credits_2" />
+                                </div>
+                            </div>
+
+                            <!-- Nonrefundable Education Credits - Form 8863 -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Nonrefundable Education Credits - Form 8863<span class="w3o-tooltip"
+                                            data-tooltip="Form 8863 helps you claim nonrefundable education credits, such as the American Opportunity Credit or the Lifetime Learning Credit, for qualified educational expenses."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$2,500" type="text" id="educationCredits1"
+                                        class="w3o-custmVal credits_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$2,500" type="text" id="educationCredits2"
+                                        class="w3o-custmVal credits_2" />
+                                </div>
+                            </div>
+
+
+                            <!-- Retirement Savings Contributions Credit - Form 8880 -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Retirement Savings Contributions Credit - Form 8880<span class="w3o-tooltip"
+                                            data-tooltip="Form 8880 enables you to claim a credit for eligible contributions to retirement savings, encouraging retirement savings for lower-income individuals."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$500" type="text" id="retirementSavingsCredit1"
+                                        class="w3o-custmVal credits_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$500" type="text" id="retirementSavingsCredit2"
+                                        class="w3o-custmVal credits_2" />
+                                </div>
+                            </div>
+
+                            <!-- Residential Energy Credits - Form 5695 -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Residential Energy Credits - Form 5695<span class="w3o-tooltip"
+                                            data-tooltip="Form 5695 is used to claim residential energy credits for qualified energy-efficient improvements made to a primary residence."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$1,000" type="text" id="energyCredits1"
+                                        class="w3o-custmVal credits_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$1,000" type="text" id="energyCredits2"
+                                        class="w3o-custmVal credits_2" />
+                                </div>
+                            </div>
+
+                            <!-- Other Credits - Form 3800 or Form 8801 -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Other Credits - Form 3800 or Form 8801<span class="w3o-tooltip"
+                                            data-tooltip="Form 3800 or Form 8801 is utilized to claim various other credits, including general business credits, that may not fit into specific categories."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$800" type="text" id="otherCredits1"
+                                        class="w3o-custmVal credits_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$800" type="text" id="otherCredits2"
+                                        class="w3o-custmVal credits_2" />
+                                </div>
+                            </div>
+
+                            <!-- Total Credits -->
+                            <div class="w3o-row w3o-final">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Total Credits<span class="w3o-tooltip"
+                                            data-tooltip="Sum of all above mentioned credits"><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$1,800" type="text" id="totalCredits1" class="w3o-custmVal"
+                                        readonly />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$1,800" type="text" id="totalCredits2" class="w3o-custmVal"
+                                        readonly />
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="w3o-row w3o-catgeory-row w3o-plan-active">
+                            <div class="w3o-col">
+                                <label for="monthly1099Income-2" class="form-label">OTHER TAXES<br></label>
+                            </div>
+                        </div>
+                        <div class="w3o-accord-body">
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Self-Employment Tax - Schedule SE<span class="w3o-tooltip"
+                                            data-tooltip="Schedule SE calculates the self-employment tax, covering Social Security and Medicare taxes for individuals with self-employment income."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$2,000" type="text" id="selfEmploymentTaxSE1"
+                                        class="w3o-custmVal other_1" readonly />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$2,000" type="text" id="selfEmploymentTaxSE2"
+                                        class="w3o-custmVal other_2" readonly />
+                                </div>
+                            </div>
+
+                            <!-- Unreported Social Security and Medicare Tax - Form 4137 or Form 8919 -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Unreported Social Security and Medicare Tax - Form 4137 or Form 8919<span
+                                            class="w3o-tooltip"
+                                            data-tooltip="Form 4137 or Form 8919 addresses unreported Social Security and Medicare taxes, ensuring proper reporting for income subject to these taxes."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$500" type="text" id="unreportedTax1"
+                                        class="w3o-custmVal other_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$500" type="text" id="unreportedTax2"
+                                        class="w3o-custmVal other_2" />
+                                </div>
+                            </div>
+
+
+                            <!-- Additional Tax on IRAs, Other Qualified Retirement Plans, etc. - Form 5329 -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Additional Tax on IRAs, Other Qualified Retirement Plans, etc. - Form 5329<span
+                                            class="w3o-tooltip"
+                                            data-tooltip="Form 5329 deals with additional taxes on certain distributions from IRAs, qualified retirement plans, and other tax-favored accounts."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$300" type="text" id="additionalTax5329_1"
+                                        class="w3o-custmVal other_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$300" type="text" id="additionalTax5329_2"
+                                        class="w3o-custmVal other_2" />
+                                </div>
+                            </div>
+
+                            <!-- Household Employment Taxes - Schedule H -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Household Employment Taxes - Schedule H<span class="w3o-tooltip"
+                                            data-tooltip="Schedule H is used to report household employment taxes, applicable when hiring domestic help, such as a nanny or housekeeper."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$400" type="text" id="householdEmploymentTaxes1"
+                                        class="w3o-custmVal other_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$400" type="text" id="householdEmploymentTaxes2"
+                                        class="w3o-custmVal other_2" />
+                                </div>
+                            </div>
+
+                            <!-- First Time Homebuyer Credit Repayment - Form 5405 -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>First Time Homebuyer Credit Repayment - Form 5405<span class="w3o-tooltip"
+                                            data-tooltip="Form 5405 addresses the repayment of the First-Time Homebuyer Credit, often required when the home is sold or ceases to be the primary residence."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$800" type="text" id="homebuyerCreditRepayment1"
+                                        class="w3o-custmVal other_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$800" type="text" id="homebuyerCreditRepayment2"
+                                        class="w3o-custmVal other_2" />
+                                </div>
+                            </div>
+
+                            <!-- Health Care: Individual Responsibility -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Health Care: Individual Responsibility<span class="w3o-tooltip"
+                                            data-tooltip="This relates to the individual responsibility requirement under the Affordable Care Act, ensuring individuals have qualifying health coverage or meet exemption criteria."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$200" type="text" id="healthCareResponsibility1"
+                                        class="w3o-custmVal other_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$200" type="text" id="healthCareResponsibility2"
+                                        class="w3o-custmVal other_2" />
+                                </div>
+                            </div>
+
+                            <!-- Taxes from Form 8959 (Addl Medicare) and Form 8960 (NIIT) -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Taxes from Form 8959 (Addl Medicare) and Form 8960 (NIIT)<span
+                                            class="w3o-tooltip"
+                                            data-tooltip="Form 8959 covers additional Medicare taxes, while Form 8960 addresses the Net Investment Income Tax (NIIT) on certain investment income."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$300" type="text" id="taxesForm8959_8960_1"
+                                        class="w3o-custmVal other_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$300" type="text" id="taxesForm8959_8960_2"
+                                        class="w3o-custmVal other_2" />
+                                </div>
+                            </div>
+                            <!-- Section 965 Net Tax Liability Installment -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Section 965 Net Tax Liability Installment<span class="w3o-tooltip"
+                                            data-tooltip="This represents installment payments for the net tax liability under Section 965, often applicable to multinational companies."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$500" type="text" id="section965Installment1"
+                                        class="w3o-custmVal other_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$500" type="text" id="section965Installment2"
+                                        class="w3o-custmVal other_2" />
+                                </div>
+                            </div>
+
+                            <div class="w3o-row w3o-final">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Total - Other taxes<span class="w3o-tooltip"
+                                            data-tooltip="Sum of categories of taxes mentioned above."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$500" type="text" id="total_other_taxes_1" class="w3o-custmVal"
+                                        readonly />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$500" type="text" id="total_other_taxes_2" class="w3o-custmVal"
+                                        readonly />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="w3o-row w3o-catgeory-row w3o-plan-active">
+                            <div class="w3o-col">
+                                <label for="monthly1099Income-2" class="form-label">PAYMENTS<br></label>
+                            </div>
+                        </div>
+                        <div class="w3o-accord-body">
+                            <!-- Federal Income Tax Withheld from Forms W-2 and 1099 -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Federal Income Tax Withheld from Forms W-2 and 1099<span class="w3o-tooltip"
+                                            data-tooltip="The total amount of federal income tax withheld from your wages (W-2) and other income sources (1099 forms)."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$2,000" type="text" id="federalIncomeTaxWithheld1"
+                                        class="w3o-custmVal payment_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$2,000" type="text" id="federalIncomeTaxWithheld2"
+                                        class="w3o-custmVal payment_2" />
+                                </div>
+                            </div>
+
+                            <!-- Add: Additional Medicare Withholding from Form 8959 -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Add: Additional Medicare Withholding from Form 8959<span class="w3o-tooltip"
+                                            data-tooltip="This represents any additional Medicare tax withheld, which is an extra withholding for high earners to support Medicare funding."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$300" type="text" id="additionalMedicareWithholding1"
+                                        class="w3o-custmVal payment_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$300" type="text" id="additionalMedicareWithholding2"
+                                        class="w3o-custmVal payment_2" />
+                                </div>
+                            </div>
+
+                            <!-- Earned Income Credit (EIC) -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Earned Income Credit (EIC)<span class="w3o-tooltip"
+                                            data-tooltip="The Earned Income Credit (EIC) is a tax credit designed for low to moderate-income individuals and families. It provides financial assistance by reducing the amount of taxes owed or even resulting in a refund."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$400" type="text" id="earnedIncomeCredit1"
+                                        class="w3o-custmVal payment_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$400" type="text" id="earnedIncomeCredit2"
+                                        class="w3o-custmVal payment_2" />
+                                </div>
+                            </div>
+
+                            <!-- Additional Child Tax Credit - Form 8812 -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Additional Child Tax Credit - Form 8812<span class="w3o-tooltip"
+                                            data-tooltip="Form 8812 is used to claim the Additional Child Tax Credit, providing an extra credit for certain qualifying child-related expenses"><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$250" type="text" id="additionalChildTaxCredit1"
+                                        class="w3o-custmVal payment_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$250" type="text" id="additionalChildTaxCredit2"
+                                        class="w3o-custmVal payment_2" />
+                                </div>
+                            </div>
+
+                            <!-- American Opportunity Tax Credit (Refundable) - Form 8863 -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>American Opportunity Tax Credit (Refundable) - Form 8863<span class="w3o-tooltip"
+                                            data-tooltip=" American Opportunity Tax Credit, a refundable credit supporting eligible education expenses incurred during the first four years of higher education."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$500" type="text" id="americanOpportunityTaxCredit1"
+                                        class="w3o-custmVal payment_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$500" type="text" id="americanOpportunityTaxCredit2"
+                                        class="w3o-custmVal payment_2" />
+                                </div>
+                            </div>
+
+                            <!-- Paid Any Estimated Tax Payments? -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Paid Any Estimated Tax Payments?<span class="w3o-tooltip"
+                                            data-tooltip="Estimated tax payments are payments made throughout the year to prepay income taxes, often by self-employed individuals or those with additional income not subject to withholding."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$1,000" type="text" id="estimatedTaxPayments1"
+                                        class="w3o-custmVal payment_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$1,000" type="text" id="estimatedTaxPayments2"
+                                        class="w3o-custmVal payment_2" />
+                                </div>
+                            </div>
+
+                            <!-- Amounts Applied from Previous Year Return -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Amounts Applied from Previous Year Return<span class="w3o-tooltip"
+                                            data-tooltip="This refers to any overpayment or credit from your previous year's tax return, which is applied to reduce your current year's tax liability."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$1,500" type="text" id="amountsAppliedPreviousYear1"
+                                        class="w3o-custmVal payment_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$1,500" type="text" id="amountsAppliedPreviousYear2"
+                                        class="w3o-custmVal payment_2" />
+                                </div>
+                            </div>
+
+                            <!-- Net Premium Tax Credit - Form 8962 -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Net Premium Tax Credit - Form 8962<span class="w3o-tooltip"
+                                            data-tooltip="a subsidy that helps eligible individuals and families afford health insurance purchased through the Health Insurance Marketplace."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$800" type="text" id="netPremiumTaxCredit1"
+                                        class="w3o-custmVal payment_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$800" type="text" id="netPremiumTaxCredit2"
+                                        class="w3o-custmVal payment_2" />
+                                </div>
+                            </div>
+
+                            <!-- Amount Paid with Request for Extension to File -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Amount Paid with Request for Extension to File<span class="w3o-tooltip"
+                                            data-tooltip="When filing for an extension to submit your tax return, this amount represents any payment made along with the extension request."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$200" type="text" id="amountPaidWithExtension1"
+                                        class="w3o-custmVal payment_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$200" type="text" id="amountPaidWithExtension2"
+                                        class="w3o-custmVal payment_2" />
+                                </div>
+                            </div>
+
+                            <!-- Excess Social Security and Tier 1 RRTA Tax Withheld -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Excess Social Security and Tier 1 RRTA Tax Withheld<span class="w3o-tooltip"
+                                            data-tooltip="This indicates any additional amounts withheld beyond the standard Social Security and Tier 1 Railroad Retirement Tax Act (RRTA) taxes."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$100" type="text" id="excessTaxWithheld1"
+                                        class="w3o-custmVal payment_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$100" type="text" id="excessTaxWithheld2"
+                                        class="w3o-custmVal payment_2" />
+                                </div>
+                            </div>
+
+                            <!-- Credit for Federal Tax on Fuels - Form 4136 -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Credit for Federal Tax on Fuels - Form 4136<span class="w3o-tooltip"
+                                            data-tooltip="Form 4136 allows you to claim a credit for federal excise taxes paid on certain fuels, providing relief for specific fuel-related expenditures."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$50" type="text" id="fuelTaxCredit1"
+                                        class="w3o-custmVal payment_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$50" type="text" id="fuelTaxCredit2"
+                                        class="w3o-custmVal payment_2" />
+                                </div>
+                            </div>
+
+                            <!-- Credits from Form 2439, Form 8885 -->
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Credits from Form 2439, Form 8885<span class="w3o-tooltip"
+                                            data-tooltip="Combined credits from Form 2439, covering undistributed long-term capital gains, and Form 8885, related to the Health Coverage Tax Credit."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$75" type="text" id="creditsFromForms2439_8885_1"
+                                        class="w3o-custmVal payment_1" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$75" type="text" id="creditsFromForms2439_8885_2"
+                                        class="w3o-custmVal payment_2" />
+                                </div>
+                            </div>
+
+                            <div class="w3o-row w3o-final">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Total Payments<span class="w3o-tooltip"
+                                            data-tooltip="Sum of all above mentioned payments"><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$75" type="text" id="total_payments_1" class="w3o-custmVal"
+                                        readonly />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <input placeholder="$75" type="text" id="total_payments_2" class="w3o-custmVal"
+                                        readonly />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="full-width-button-container">
+                            <a href="#result"> <button class="primary-button is-purple" onclick="change()"
+                                    id="calculate_me">Calculate</button></a>
+                        </div>
+
+                        
+
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="w3o-table-wrap w3oTabletp1 active " id="result" style="display: none;">
+                <div class="result-main">
+                    <div id="scenario1" class="tab">
+                        <h3 class="header_head_two">Scenario 1</h3>
+                        <div class="result-section">
+                             <div class="result_scenario1">
+                                <div class="fields field2">
+                                    <div class="new">
+                                        <label>Taxable income</label>
+                                        <span class="value" id="taxable1">$0</span>
+                                    </div>
+
+                                    <div class=" new">
+                                        <label>Taxes  Due or Refund</label>
+                                        <span class="value" id="tax1_due">$0</span>
+                                    </div>
+                                </div>  
+                            </div>
+
+                            <div class="result_scenario1">
+
+                                <div class="fields breakdown_table">
+                                    <div class="result-item ">
+                                        <label>Adjusted Gross Income</label>
+                                        <span class='small_value' id="gross1">$0</span>
+                                    </div>
+
+                                    <div class="result-item ">
+                                        <label>Standard or Itemized Deduction</label>
+                                        <span class='small_value' id="ded1">$0</span>
+                                    </div>
+
+                                    <div class="result-item ">
+                                        <label>Qualified Business Income Deduction</label>
+                                        <span class='small_value' id="business_deduction1">$0</span>
+                                    </div>
+
+                                    <div class="result-item ">
+                                        <label>Marginal Tax Rate</label>
+                                        <span class='small_value' id="margin1">$0</span>
+                                    </div>
+
+
+                                    <div class="result-item ">
+                                        <label>Total Tax</label>
+                                        <span class='small_value' id="taxes_combined1">$0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div id="scenario2" class="tab">
+                        <h3 class="header_head_two">Scenario 2</h3>
+                        <div class="result-section">
+                          
+                            <div class="result_scenario2">
+                                <div class="fields field2">
+                                    <div class="new">
+                                        <label>Taxable income</label>
+                                        <span class="value" id="taxable2">$0</span>
+                                    </div>
+
+                                    <div class=" new">
+                                        <label>Taxes  Due or Refund</label>
+                                        <span class="value" id="tax2_due">$0</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="result_scenario2">
+                           
+                            <div class="fields breakdown_table">
+                                <div class="result-item ">
+                                    <label>Adjusted Gross Income</label>
+                                    <span class='small_value' id="gross2">$0</span>
+                                </div>
+
+                                <div class="result-item ">
+                                    <label>Standard or Itemized Deduction</label>
+                                    <span class='small_value' id="ded2">$0</span>
+                                </div>
+
+
+                                <div class="result-item ">
+                                    <label>Qualified Business Income Deduction</label>
+                                    <span class='small_value' id="business_deduction2">$0</span>
+                                </div>
+
+                                <div class="result-item ">
+                                    <label>Marginal Tax Rate</label>
+                                    <span class='small_value' id="margin2">$0</span>
+                                </div>
+
+                                <div class="result-item">
+                                    <label>Total Tax</label>
+                                    <span class='small_value' id="taxes_combined2">$0</span>
+                                </div>
+
+                            </div>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="full-width-button-container tab_buttons ">
+                    <a href="#input"> <button class="is-purple primary-button" onclick="change_back()">Go
+                            Back</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <script src="asset2.js"></script>
+</body>
+
+</html>

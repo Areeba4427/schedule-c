@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="style.css" rel="stylesheet" />
+    <title>Schedule C-Tax | Form 1040</title>
+
+</head>
+
+<body>
+
+    <div class="w3oct_wrapper">
+        
+        <div class="w3oct_mid_content">
+
+            <div class="w3o-multiTable-tabs">
+                <main class="main_header">
+                    <h1 class="header_head">Schedule C-Tax Projection</h1>
+                  
+                </main>
+            </div>
+
+            <div class="w3o-table-wrap w3oTabletp1 active" id="input">
+                <div class="logo-container">
+                    <img src="https://i.ibb.co/kHxvfT4/Auto-Tax-Advisor-Main-Logo-2400x1800.webp" alt="Auto-Tax-Advisor-Main-Logo-2400x1800" border="0">
+                   
+                </div>
+                    
+                  
+                <div class="form-group first-child">
+                    <div class="form-label-wrap"><label for="monthly1099Income-2" class="form-label">ENTITY
+                            TYPE<br></label></div>
+                    <select id="stateResidence" name="stateResidence" data-name="stateResidence" required=""
+                        class="form-control form-control-select w-select">
+                        <option value="C-Corporation">C-Corporation</option>
+                        <option value="S-Corporation">S-Corporation</option>
+                        <option value="LLC">Limited Liability Company (LLC)</option>
+                        <option value="Partnership">Partnership</option>
+
+                    </select>
+                </div>
+
+                <div class="w3o-plan-tabs">
+                    <ul>
+                        <li class="w3o-plan-tab w3o-pt-2">SCENARIO 1</li>
+                        <li class="w3o-plan-tab w3o-pt-3">ADJUSTMENT</li>
+                        <li class="w3o-plan-tab w3o-pt-4">SCENARIO 2</li>
+                    </ul>
+                </div>
+                <div class="w3o-price-table-wrap">
+
+                    <div class="w3o-table-header">
+
+                        <div class="w3o-row">
+                            <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                <h3></h3>
+                            </div>
+
+                            <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                <h3>SCENARIO 1</h3>
+
+
+                            </div>
+                            <div class="w3o-col w3o-plan-cont w3o-col-4">
+                                <h3>ADJUSTMENT</h3>
+
+                            </div>
+                            <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                <h3>SCENARIO 2</h3>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w3o-table-body">
+                        <div class="w3o-row w3o-catgeory-row w3o-plan-active">
+                            <div class="w3o-col">
+                                <label for="monthly1099Income-2" class="form-label">INCOME<br></label>
+                            </div>
+                        </div>
+                        <div class="w3o-accord-body">
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Gross Income<span class="w3o-tooltip"
+                                            data-tooltip="This is the total on line 7 of the 1040 C"><img
+                                            src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$50,000" type="text" id="result1" class="w3o-custmVal" />
+
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-4">
+                                    <input type="text" placeholder="$12,000" id="result2" class="w3o-custmVal" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <span type="text" id="result3" class="w3o-custmVal"></span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="w3o-row w3o-catgeory-row w3o-plan-active">
+                            <div class="w3o-col">
+                                <label for="monthly1099Income-2" class="form-label">EXPENSES<br></label>
+                            </div>
+                        </div>
+                        <div class="w3o-accord-body">
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Advertising<span class="w3o-tooltip"
+                                            data-tooltip="Money spent on promoting your business to attract customers."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$4,000" id="w3o-expense-textinput1" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-4">
+                                    <input placeholder="$1,000" id="w3o-expense-textinput2" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <span id="advertising_scenario2" class="w3o-custmVal"> </span>
+                                </div>
+                            </div>
+
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Car and truck expenses (Itemized or Mileage)<span class="w3o-tooltip"
+                                            data-tooltip="Capture the costs associated with using vehicles for business purposes, including both itemized expenses and mileage deductions."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$4,000" id="w3o-expense-textinput3" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-4">
+                                    <input placeholder="$1,000" id="w3o-expense-textinput4" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <span id="car_scenario2" class="w3o-custmVal"></span>
+
+                                </div>
+                            </div>
+
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Commissions and fees, Legal and Professional Services and Taxes and License<span
+                                            class="w3o-tooltip"
+                                            data-tooltip="Sum of expenditures on commissions, fees, legal services, professional services, and taxes and licenses related to your business."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$4,000" id="w3o-expense-textinput5" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-4">
+                                    <input placeholder="$1,000" id="w3o-expense-textinput6" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <span id="commission_scenario2" class="w3o-custmVal"></span>
+                                </div>
+
+                            </div>
+
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Contract Labor and Wages , less employment credits<span class="w3o-tooltip"
+                                            data-tooltip="Reflects the total payments made for contract labor and wages, excluding any employment credits"><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$4,000" id="w3o-expense-textinput7" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-4">
+                                    <input placeholder="$1,000" id="w3o-expense-textinput8" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <span id="contract_scenario2" class="w3o-custmVal"> </span>
+                                </div>
+
+                            </div>
+
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Depletion and Depreciation<span class="w3o-tooltip"
+                                            data-tooltip="Encompasses the reduction of natural resources and the depreciation of assets over time."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$4,000" id="w3o-expense-textinput9" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-4">
+                                    <input placeholder="$1,000" id="w3o-expense-textinput10" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <span id="depletion_scenario2" class="w3o-custmVal"> </span>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Employee Benefits and Pension and Profit Sharing Plans<span class="w3o-tooltip"
+                                            data-tooltip="Includes costs associated with employee benefits, pension plans, and profit-sharing arrangements."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$4,000" id="w3o-expense-textinput13" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-4">
+                                    <input placeholder="$1,000" id="w3o-expense-textinput14" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <span id="employee_scenario2" class="w3o-custmVal"> </span>
+                                </div>
+
+                            </div>
+
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Insurance (other than Heath), Repairs and Maintenance, Supplies and
+                                        Utilities<span class="w3o-tooltip"
+                                            data-tooltip="Aggregate of expenses for insurance (excluding health), repairs and maintenance, supplies, and utilities."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$4,000" id="w3o-expense-textinput15" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-4">
+                                    <input placeholder="$1,000" id="w3o-expense-textinput16" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <span id="insurance_scenario2" class="w3o-custmVal"></span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Interest-Mortgage and other<span class="w3o-tooltip"
+                                            data-tooltip="Covers interest payments on mortgages and other forms of borrowed capital."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$4,000" id="w3o-expense-textinput17" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-4">
+                                    <input placeholder="$1,000" id="w3o-expense-textinput18" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <span id="interest_scenario2" class="w3o-custmVal"> </span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Office Expense and Rent or lease<span class="w3o-tooltip"
+                                            data-tooltip="Encompasses costs related to office supplies, office space rent, or lease payments."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$4,000" id="w3o-expense-textinput23" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-4">
+                                    <input placeholder="$1,000" id="w3o-expense-textinput24" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <span id="office_scenario2" class="w3o-custmVal"> </span>
+                                </div>
+                            </div>
+
+
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Travel and Deductible Meals<span class="w3o-tooltip"
+                                            data-tooltip="Represents expenses incurred during business-related travel, including meals that qualify for tax deduction."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$4,000" id="w3o-expense-textinput37" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-4">
+                                    <input placeholder="$1,000" id="w3o-expense-textinput38" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <span id="travel_scenario2" class="w3o-custmVal"> </span>
+
+                                </div>
+
+                            </div>
+
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Home office deduction<span class="w3o-tooltip"
+                                            data-tooltip="Reflects the deduction related to the business use of your home."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$4,000" id="w3o-expense-textinput39" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-4">
+                                    <input placeholder="$1,000" id="w3o-expense-textinput40" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <span id="home_office" class="w3o-custmVal"> </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="w3o-row">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Other Expenses<span class="w3o-tooltip"
+                                            data-tooltip="A category for any additional business-related expenses not covered in the above sections."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <input placeholder="$4,000" id="w3o-expense-textinput41" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-4">
+                                    <input placeholder="$1,000" id="w3o-expense-textinput42" type="text"
+                                        onkeypress='return num(event)' value="" />
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <span id="other_expenses" class="w3o-custmVal"> </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="w3o-row w3o-final">
+                                <div class="w3o-col w3o-plan-feature w3o-col-1">
+                                    <p>Total Expenses<span class="w3o-tooltip"
+                                            data-tooltip="The complete sum of costs."><img
+                                                src="https://i.ibb.co/nrP91Vd/w3o-info-icon.png"></span></p>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-3">
+                                    <span id="result4" class="w3o-custmVal"></span>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-4">
+                                    <span id="result5" class="w3o-custmVal"></span>
+                                </div>
+                                <div class="w3o-col w3o-plan-cont w3o-col-5">
+                                    <span id="result6" class="w3o-custmVal"></span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="full-width-button-container">
+                            <a href="#result"> <button class="primary-button is-purple" onclick="disp()"
+                                    id="calculate_me">Calculate</button></a>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="w3o-table-wrap w3oTabletp1 active " id="result" style="display: none;">
+                <div class="result-main">
+                    <div id="scenario1" class="tab active-tab">
+                        <h3 class="header_head_two">Scenario 1</h3>
+                        <div class="result-section">
+                             <div class="result_scenario1">
+                                <div class="fields field2">
+                                    <div class="new">
+                                        <label>Net Profit or (Loss)</label>
+                                        <span class="value" id="net1">$0</span>
+                                    </div>
+
+                                    <div class="self_employment_tax new">
+                                        <label>Total Self Employment Tax</label>
+                                        <span class="value" id="total_tax1">$0</span>
+                                    </div>
+                                </div>  
+                            </div>
+
+                            <div class="result_scenario1">
+
+                                <div class="fields breakdown_table">
+                                    <div class="result-item self_employment_tax">
+                                        <label>Total income subject to Self-Employment Taxes</label>
+                                        <span class='small_value' id="tax1">$0</span>
+                                    </div>
+
+                                    <div class="result-item self_employment_tax">
+                                        <label>Total income subject to Social Security</label>
+                                        <span class='small_value' id="social1">$0</span>
+                                    </div>
+
+                                    <div class="result-item self_employment_tax">
+                                        <label>Medicare Tax (2.9%)</label>
+                                        <span class='small_value' id="med1">$0</span>
+                                    </div>
+
+                                    <div class="result-item self_employment_tax">
+                                        <label>Social Security Tax (12.4%)</label>
+                                        <span class='small_value' id="fica1">$0</span>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div id="scenario2" class="tab">
+                        <h3 class="header_head_two">Scenario 2</h3>
+                        <div class="result-section">
+                          
+                            <div class="result_scenario2">
+                                <div class="fields field2">
+                                    <div class="new">
+                                        <label>Net Profit or (Loss)</label>
+                                        <span class="value" id="net2">$0</span>
+                                    </div>
+
+                                    <div class="self_employment_tax new">
+                                        <label>Total Self Employment Tax</label>
+                                        <span class="value" id="total_tax2">$0</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="result_scenario2">
+                           
+                            <div class="fields breakdown_table">
+                                <div class="result-item self_employment_tax">
+                                    <label>Total income subject to Self-Employment Taxes</label>
+                                    <span class='small_value' id="tax2">$0</span>
+                                </div>
+
+                                <div class="result-item self_employment_tax">
+                                    <label>Total income subject to Social Security</label>
+                                    <span class='small_value' id="social2">$0</span>
+                                </div>
+
+
+                                <div class="result-item self_employment_tax">
+                                    <label>Medicare Tax (2.9%)</label>
+                                    <span class='small_value' id="med2">$0</span>
+                                </div>
+
+                                <div class="result-item self_employment_tax">
+                                    <label>Social Security Tax (12.4%)</label>
+                                    <span class='small_value' id="fica2">$0</span>
+                                </div>
+                            </div>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="full-width-button-container pair_button">
+                    <a href="#input"> <button class="is-purple" onclick="disp2()">Go
+                            Back</button></a>
+
+                    <a href="#input"> <button class="is-purple" onclick="openForm()">
+                        Continue to Personal Taxes</button></a>        
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <script src="asset.js"></script>
+</body>
+
+</html>
